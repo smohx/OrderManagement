@@ -2,18 +2,19 @@ package com.techchallenge.util;
 
 import java.io.BufferedReader;
 import java.io.FileNotFoundException;
-import java.io.FileReader;
 import java.io.IOException;
+import java.io.InputStreamReader;
 import java.util.ArrayList;
 import java.util.List;
+
+import org.springframework.web.multipart.MultipartFile;
 
 import com.techchallenge.bean.InventorySource;
 
 public class InventorySourceFileReader {
 	
-	public static List<InventorySource> parseFile(){
+	public static List<InventorySource> parseFile(MultipartFile sourcefile){
 		
-		String csvFile = "input/InventorySource.csv";
         BufferedReader br = null;
         String line = "";
         String cvsSplitBy = ",";
@@ -21,7 +22,7 @@ public class InventorySourceFileReader {
 
         try {
 
-            br = new BufferedReader(new FileReader(csvFile));
+            br = new BufferedReader(new InputStreamReader(sourcefile.getInputStream()));
             while ((line = br.readLine()) != null) {
             	
             	if(line.trim().charAt(0) == '#'){

@@ -187,9 +187,10 @@ public class FulfillmentServiceImpl implements FulfillmentService {
 	}
 
 	private void refreshSourceDestinationToBeFulfilled(){
+		sourceDestinationToBeFulfilled = new HashMap<String,Integer>();
+
 		for(String s:sourceSkuDestination.keySet()){
 			String ss = s.split(",")[0]+","+s.split(",")[2];
-			Map<String,Integer> sourceDestinationToBeFulfilled = new HashMap<String,Integer>();
 			if(sourceDestinationToBeFulfilled.containsKey(ss)){
 				sourceDestinationToBeFulfilled.put(ss, sourceDestinationToBeFulfilled.get(ss)+1);
 			}

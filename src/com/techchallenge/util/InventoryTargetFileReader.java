@@ -4,14 +4,17 @@ import java.io.BufferedReader;
 import java.io.FileNotFoundException;
 import java.io.FileReader;
 import java.io.IOException;
+import java.io.InputStreamReader;
 import java.util.ArrayList;
 import java.util.List;
+
+import org.springframework.web.multipart.MultipartFile;
 
 import com.techchallenge.bean.InventoryTarget;
 
 public class InventoryTargetFileReader {
 	
-	public static List<InventoryTarget> parseFile(){
+	public static List<InventoryTarget> parseFile(MultipartFile targetfile){
 		
 		String csvFile = "input/InventoryTarget.csv";
         BufferedReader br = null;
@@ -21,7 +24,7 @@ public class InventoryTargetFileReader {
 
         try {
 
-            br = new BufferedReader(new FileReader(csvFile));
+            br = new BufferedReader(new InputStreamReader(targetfile.getInputStream()));
             while ((line = br.readLine()) != null) {
             	
             	if(line.trim().charAt(0) == '#'){
