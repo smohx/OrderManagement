@@ -13,8 +13,8 @@
 </head>
 
 <body>
-		<!--for demo wrap-->
-		<h1>Fixed Table header</h1>
+		<h1>TECH CHALLENGE 50 (HYBRIS)</h1>
+		<h2>Fulfillment Result</h2>
 		<div class="tablecontent">
 			<div class="tbl-header">
 				<table cellpadding="0" cellspacing="0" border="0">

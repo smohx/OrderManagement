@@ -14,7 +14,7 @@ import com.techchallenge.bean.InventoryTarget;
 
 public class InventoryTargetFileReader {
 	
-	public static List<InventoryTarget> parseFile(MultipartFile targetfile){
+	public static List<InventoryTarget> parseFile(MultipartFile targetfile) throws Exception{
 		
 		String csvFile = "input/InventoryTarget.csv";
         BufferedReader br = null;
@@ -34,37 +34,37 @@ public class InventoryTargetFileReader {
                 String[] columns = line.split(cvsSplitBy);
                 InventoryTarget target = new InventoryTarget();
                 if(columns.length < 3){
-                	throw new Exception("Incorrect number of colums in CSV");
+                	throw new Exception("Error while parsing the file");
                 }
                 if(null != columns[0] && !columns[0].trim().isEmpty()){
                 	target.setDestination(columns[0].trim());
                 }
                 else
                 {
-                	throw new Exception("Null value in CSV");
+                	throw new Exception("Error while parsing the file");
                 }
                 if(null != columns[1] && !columns[1].trim().isEmpty()){
                 	target.setSku(columns[1].trim());
                 }
                 else
                 {
-                	throw new Exception("Null value in CSV");
+                	throw new Exception("Error while parsing the file");
                 }
                 if(null != columns[2] && !columns[2].trim().isEmpty()){
                 	target.setAmount(Integer.parseInt(columns[2].trim()));
                 }
                 else
                 {
-                	throw new Exception("Null value in CSV");
+                	throw new Exception("Error while parsing the file");
                 }
                 
                 targetList.add(target);
             }
 
         } catch (FileNotFoundException e) {
-            e.printStackTrace();
+        	throw new Exception("Error while parsing the file");
         } catch (IOException e) {
-            e.printStackTrace();
+        	throw new Exception("Error while parsing the file");
         } catch (Exception e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
@@ -73,7 +73,7 @@ public class InventoryTargetFileReader {
                 try {
                     br.close();
                 } catch (IOException e) {
-                    e.printStackTrace();
+                	throw new Exception("Error while parsing the file");
                 }
             }
         }

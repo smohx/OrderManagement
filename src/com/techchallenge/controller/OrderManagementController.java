@@ -1,6 +1,5 @@
 package com.techchallenge.controller;
 
-import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -21,13 +20,13 @@ import com.techchallenge.util.InventoryTargetFileReader;
 
 @Controller
 public class OrderManagementController {
-	
+
 	@RequestMapping(value ="/",method=RequestMethod.GET)
 	public ModelAndView adminLogin() {
 
 		ModelAndView model = new ModelAndView();
 		model.setViewName("ordermanagement");
-
+		model.addObject("error", false);
 		return model;
 
 	}
@@ -35,26 +34,33 @@ public class OrderManagementController {
 	public ModelAndView fulfillOrder(@RequestParam("sourcefile") MultipartFile sourcefile,
 			@RequestParam("targetfile") MultipartFile targetfile) {
 
-		List<InventorySource> sourceList =  InventorySourceFileReader.parseFile(sourcefile);
-		List<InventoryTarget> targetList =  InventoryTargetFileReader.parseFile(targetfile);
-		FulfillmentService sf = new FulfillmentServiceImpl();
-		List<FulfillmentResult> result = new ArrayList<FulfillmentResult>();
-		try {
-			result = sf.getFulfillment(sourceList, targetList);
-		} catch (Exception e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		}
-		for(FulfillmentResult r :result){
-			System.out.println(r.getLocation()+r.getDestination()+r.getSku()+r.getAmount());
-		}
-		
 		ModelAndView model = new ModelAndView();
-		model.setViewName("fulfillmentresult");
-		model.addObject("result", result);
+		try{
+			List<InventorySource> sourceList =  InventorySourceFileReader.parseFile(sourcefile);
+			List<InventoryTarget> targetList =  InventoryTargetFileReader.parseFile(targetfile);
+			FulfillmentService sf = new FulfillmentServiceImpl();
+			List<FulfillmentResult> result = new ArrayList<FulfillmentResult>();
+			try {
+				result = sf.getFulfillment(sourceList, targetList);
+			} catch (Exception e) {
+				// TODO Auto-generated catch block
+				throw new Exception("Error while fulfilling the orders");
+			}
+
+
+
+			model.setViewName("fulfillmentresult");
+			model.addObject("result", result);
+
+		} 
+		catch(Exception e){
+			model.setViewName("ordermanagement");
+			model.addObject("errorCode", e.getMessage());
+			model.addObject("error", true);
+		}
 
 		return model;
 
 	}
-	
+
 }

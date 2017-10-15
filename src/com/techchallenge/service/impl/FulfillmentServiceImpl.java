@@ -158,7 +158,7 @@ public class FulfillmentServiceImpl implements FulfillmentService {
 		if(null != toRemoveS){
 			sourceList.remove(toRemoveS);
 		}
-		if(targetList.size() == 0){
+		if(targetList.size() == 0 || sourceSkuDestination.size() == 0){
 			processActive = false;
 		}
 		refreshAvailability();

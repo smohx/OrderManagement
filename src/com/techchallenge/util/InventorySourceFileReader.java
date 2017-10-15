@@ -13,7 +13,7 @@ import com.techchallenge.bean.InventorySource;
 
 public class InventorySourceFileReader {
 	
-	public static List<InventorySource> parseFile(MultipartFile sourcefile){
+	public static List<InventorySource> parseFile(MultipartFile sourcefile) throws Exception{
 		
         BufferedReader br = null;
         String line = "";
@@ -32,46 +32,46 @@ public class InventorySourceFileReader {
                 String[] columns = line.split(cvsSplitBy);
                 InventorySource source = new InventorySource();
                 if(columns.length < 3){
-                	throw new Exception("Incorrect number of colums in CSV");
+                	throw new Exception("Error while parsing the file");
                 }
                 if(null != columns[0] && !columns[0].trim().isEmpty()){
                 	source.setLocation(columns[0].trim());
                 }
                 else
                 {
-                	throw new Exception("Null value in CSV");
+                	throw new Exception("Error while parsing the file");
                 }
                 if(null != columns[1] && !columns[1].trim().isEmpty()){
                 	source.setSku(columns[1].trim());
                 }
                 else
                 {
-                	throw new Exception("Null value in CSV");
+                	throw new Exception("Error while parsing the file");
                 }
                 if(null != columns[2] && !columns[2].trim().isEmpty()){
                 	source.setAmount(Integer.parseInt(columns[2].trim()));
                 }
                 else
                 {
-                	throw new Exception("Null value in CSV");
+                	throw new Exception("Error while parsing the file");
                 }
                 
                 sourceList.add(source);
             }
 
         } catch (FileNotFoundException e) {
-            e.printStackTrace();
+            throw new Exception("Error while parsing the file");
         } catch (IOException e) {
-            e.printStackTrace();
+        	throw new Exception("Error while parsing the file");
         } catch (Exception e) {
 			// TODO Auto-generated catch block
-			e.printStackTrace();
+        	throw new Exception("Error while parsing the file");
 		} finally {
             if (br != null) {
                 try {
                     br.close();
                 } catch (IOException e) {
-                    e.printStackTrace();
+                	throw new Exception("Error while parsing the file");
                 }
             }
         }
