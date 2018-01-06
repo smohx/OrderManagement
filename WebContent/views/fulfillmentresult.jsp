@@ -13,9 +13,12 @@
 </head>
 
 <body>
-		<h1>TECH CHALLENGE 50 (HYBRIS)</h1>
-		<h2>Fulfillment Result</h2>
+	<div>
+		<img src="images/hybris_logo.png" class="hybrislogo" />
+	</div>
+	
 		<div class="tablecontent">
+		<h2>Fulfillment Result</h2>
 			<div class="tbl-header">
 				<table cellpadding="0" cellspacing="0" border="0">
 					<thead>
