@@ -1,8 +1,8 @@
+
 body{
   background-image: url("../images/background.jpg");
   
 }
-
 
 
 .inputsource {
@@ -13,7 +13,7 @@ body{
     margin-left: -260px;
     width: 250px;
     height: 200px;
-    border: 3px dashed #ecebeb;
+    border: 3px dashed #0f76b1;
 }
 .inputtarget {
     position: absolute;
@@ -23,14 +23,14 @@ body{
     margin-left: 10px;
     width: 250px;
     height: 200px;
-    border: 3px dashed #ecebeb;
+    border: 3px dashed #0f76b1;
 }
 form p{
   width: 100%;
   height: 100%;
   text-align: center;
   line-height: 170px;
-  color: #ecebeb;
+  color: #0f76b1;
   font-family: cursive;
 }
 form .upload{
@@ -45,8 +45,8 @@ form .upload{
 .sub{
 position: absolute;
     margin: 0;
-    color: #ecebeb;
-    background: #ecebeb;
+    color: #5897e5;
+    background: #5897e5;
     border: none;
     width: 527px;
     height: 35px;
@@ -72,7 +72,7 @@ position: absolute;
     height: 100%;
     text-align: center;
     line-height: 30px;
-    color: #2b5e2a;
+    color: #fbfbf9;
     font-family: cursive;
     font-size: 20px;
     font-weight: bold;
@@ -90,9 +90,9 @@ h1{
 
 h2{
   font-size: 25px;
-  color: #ecebeb;
+  color: #0f76b1;
   text-transform: uppercase;
-  font-weight: 300;
+  font-weight: 900;
   font-family: cursive;
   text-align: center;
   margin-bottom: 15px;
@@ -104,20 +104,20 @@ table{
   table-layout: fixed;
 }
 .tbl-header{
-  background-color: rgba(255,255,255,0.3);
+  background-color: rgba(255,255,255,0.6);
  }
 .tbl-content{
   height:auto;
   overflow-x:auto;
   margin-top: 0px;
-  border: 1px solid rgba(255,255,255,0.3);
+  border: 1px solid rgba(255,255,255,0.6);
 }
 th{
   padding: 20px 15px;
   font-weight: 700;
-  font-size: 20px;
+  font-size: 18px;
   font-family: cursive;
-  color: #ecebeb;
+  color: #0f76b1;
   text-transform: uppercase;
   text-align: center;
 }
@@ -125,17 +125,26 @@ td{
 	padding: 13px;
     vertical-align: middle;
     font-weight: 500;
-    font-size: 20px;
+    font-size: 18px;
     font-family: cursive;
-    color: #ecebeb;
+    color: #0f76b1;
     text-align: center;
-    border-bottom: solid 1px rgba(255,255,255,0.1);
+    border-bottom: solid 1px rgba(255,255,255,0.6);
 }
 .tablecontent{
 	top: 50%;
 	left: 50%;
 	width: 900px;
-    height: 500px;
-    margin-top: 20px;
+    height: 600px;
+    margin-top: 100px;
     margin-left: 200px;
+}
+.hybrislogo {
+   position: fixed;
+   length: auto;
+   width: 300px;
+   top: 0%;
+   left: 100%;
+   margin-top: 0px;
+   margin-left: -330px;
 }
